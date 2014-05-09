@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset=utf-8 />
-<title>A Simple Map</title>
+<title>Layers</title>
 
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
 <script src='https://api.tiles.mapbox.com/mapbox.js/v1.6.2/mapbox.js'></script>
@@ -17,7 +17,7 @@
 
 
 
-
+<!--
 
 <div id='map'></div>
 <script>
@@ -26,7 +26,7 @@ var map = L.mapbox.map('map', 'cindysanhueza.i68pa1d9')
     <iframe width='100%' height='500px' frameBorder='0' src='http://a.tiles.mapbox.com/v3/cindysanhueza.i68pa1d9/attribution,zoompan,zoomwheel,geocoder,share.html'></iframe>
 
 </script>
-
+-->
 
 
 
@@ -40,6 +40,7 @@ var map = L.mapbox.map('map', 'cindysanhueza.i68pa1d9')
     margin: 0;
     padding: 0;
     z-index: 100;
+
 }
 
 #map-ui a {
@@ -73,7 +74,7 @@ var map = L.mapbox.map('map', 'cindysanhueza.i68pa1d9')
 
 #map-ui a.active {
     background: #3887BE;
-    border-color: #3887BE;
+    border-color: #3887BE;    
     border-top-color: #FFF;
     color: #FFF;
 }
@@ -84,9 +85,21 @@ var map = L.mapbox.map('map', 'cindysanhueza.i68pa1d9')
 var map = L.map('map').setView([-33.033, -71.644], 13);   
 var ui = document.getElementById('map-ui');
 
-addLayer(L.mapbox.tileLayer('cindysanhueza.i68pa1d9'), 'Base Map', 1);
-addLayer(L.mapbox.tileLayer('cindysanhueza.i5pp68kd'), 'Centros médicos', 2);
-addLayer(L.mapbox.tileLayer('examples.bike-locations'), 'Bike Stations', 3);
+/**<!--addLayer(L.mapbox.tileLayer('cindysanhueza.i5pp68kd'), 'Descarga api', 1);
+**/
+addLayer(L.mapbox.tileLayer('cindysanhueza.i68pa1d9'), 'Mapa base', 1);
+addLayer(L.mapbox.tileLayer('j-ulzurrun.0z3nb3xr'), 'Acopio', 2);
+addLayer(L.mapbox.tileLayer('j-ulzurrun.7w42huxr'), 'Albergues', 3);
+addLayer(L.mapbox.tileLayer('j-ulzurrun.xgioogvi '), 'Ayuda animales', 4);
+addLayer(L.mapbox.tileLayer('j-ulzurrun.i41xxbt9'), 'Catastro y documentos', 5);
+addLayer(L.mapbox.tileLayer('j-ulzurrun.i41xxbt9'), 'Catastro y documentos', 6)
+addLayer(L.mapbox.tileLayer('j-ulzurrun.i41xxbt9'), 'Catastro y documentos', 7)
+addLayer(L.mapbox.tileLayer('j-ulzurrun.i41xxbt9'), 'Catastro y documentos', 8)
+
+
+
+
+
 
 function addLayer(layer, name, zIndex) {
     layer
@@ -118,7 +131,57 @@ function addLayer(layer, name, zIndex) {
     item.appendChild(link);
     ui.appendChild(item);
 }
+
+
 </script>
+<script>
+
+
+
+
+
+
+
+var geojson = [
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-33.048988159067164,-71.61323726177216]
+    },
+    "properties": {
+      "title": "Liceo Técnico Femenino de Valparaíso",
+      "description": "Albergue",
+      
+    }
+  }
+  ];
+
+/**
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-122.414, 37.776]
+    },
+    "properties": {
+      "title": "Mapbox SF",
+      "description": "155 9th St, San Francisco",
+      "marker-color": "#fc4353",
+      "marker-size": "large",
+      "marker-symbol": "harbor"
+    }
+  }
+];
+**/
+
+L.map('map'
+
+  .featureLayer.setGeoJSON(geojson);
+</script>
+
+
+
 
 
 </body>
